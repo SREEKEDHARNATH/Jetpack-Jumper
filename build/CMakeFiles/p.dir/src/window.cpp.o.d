@@ -234,8 +234,10 @@ CMakeFiles/p.dir/src/window.cpp.o: \
  /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
  /usr/include/SDL2/SDL_misc.h /usr/include/SDL2/SDL_error.h \
- /usr/include/SDL2/SDL_events.h /usr/include/SDL2/SDL_render.h \
+ /usr/include/SDL2/SDL_events.h /usr/include/SDL2/SDL_keycode.h \
+ /usr/include/SDL2/SDL_mouse.h /usr/include/SDL2/SDL_render.h \
  /usr/include/SDL2/SDL_timer.h /usr/include/SDL2/SDL_video.h \
+ /usr/include/SDL2/SDL_image.h /usr/include/SDL2/SDL.h \
  /usr/include/c++/16/iostream /usr/include/c++/16/ostream \
  /usr/include/c++/16/bits/ostream.h /usr/include/c++/16/ios \
  /usr/include/c++/16/iosfwd /usr/include/c++/16/bits/stringfwd.h \
@@ -312,4 +314,5 @@ CMakeFiles/p.dir/src/window.cpp.o: \
  /usr/include/c++/16/bits/ostream_print.h \
  /usr/include/c++/16/bits/ostream.tcc /usr/include/c++/16/istream \
  /usr/include/c++/16/bits/istream.tcc /usr/include/c++/16/utility \
- /usr/include/c++/16/bits/stl_relops.h /usr/include/c++/16/bits/intcmp.h
+ /usr/include/c++/16/bits/stl_relops.h /usr/include/c++/16/bits/intcmp.h \
+ /home/sree/Jame-Gam/Jetpack\ Jumper/include/listeners.hpp

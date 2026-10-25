@@ -72,10 +72,38 @@ include CMakeFiles/p.dir/flags.make
 CMakeFiles/p.dir/codegen:
 .PHONY : CMakeFiles/p.dir/codegen
 
+CMakeFiles/p.dir/src/api.cpp.o: CMakeFiles/p.dir/flags.make
+CMakeFiles/p.dir/src/api.cpp.o: /home/sree/Jame-Gam/Jetpack\ Jumper/src/api.cpp
+CMakeFiles/p.dir/src/api.cpp.o: CMakeFiles/p.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/sree/Jame-Gam/Jetpack Jumper/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/p.dir/src/api.cpp.o"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/p.dir/src/api.cpp.o -MF CMakeFiles/p.dir/src/api.cpp.o.d -o CMakeFiles/p.dir/src/api.cpp.o -c "/home/sree/Jame-Gam/Jetpack Jumper/src/api.cpp"
+
+CMakeFiles/p.dir/src/api.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/p.dir/src/api.cpp.i"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sree/Jame-Gam/Jetpack Jumper/src/api.cpp" > CMakeFiles/p.dir/src/api.cpp.i
+
+CMakeFiles/p.dir/src/api.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/p.dir/src/api.cpp.s"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sree/Jame-Gam/Jetpack Jumper/src/api.cpp" -o CMakeFiles/p.dir/src/api.cpp.s
+
+CMakeFiles/p.dir/src/listeners.cpp.o: CMakeFiles/p.dir/flags.make
+CMakeFiles/p.dir/src/listeners.cpp.o: /home/sree/Jame-Gam/Jetpack\ Jumper/src/listeners.cpp
+CMakeFiles/p.dir/src/listeners.cpp.o: CMakeFiles/p.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/sree/Jame-Gam/Jetpack Jumper/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/p.dir/src/listeners.cpp.o"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/p.dir/src/listeners.cpp.o -MF CMakeFiles/p.dir/src/listeners.cpp.o.d -o CMakeFiles/p.dir/src/listeners.cpp.o -c "/home/sree/Jame-Gam/Jetpack Jumper/src/listeners.cpp"
+
+CMakeFiles/p.dir/src/listeners.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/p.dir/src/listeners.cpp.i"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sree/Jame-Gam/Jetpack Jumper/src/listeners.cpp" > CMakeFiles/p.dir/src/listeners.cpp.i
+
+CMakeFiles/p.dir/src/listeners.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/p.dir/src/listeners.cpp.s"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sree/Jame-Gam/Jetpack Jumper/src/listeners.cpp" -o CMakeFiles/p.dir/src/listeners.cpp.s
+
 CMakeFiles/p.dir/src/main.cpp.o: CMakeFiles/p.dir/flags.make
 CMakeFiles/p.dir/src/main.cpp.o: /home/sree/Jame-Gam/Jetpack\ Jumper/src/main.cpp
 CMakeFiles/p.dir/src/main.cpp.o: CMakeFiles/p.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/sree/Jame-Gam/Jetpack Jumper/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/p.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/sree/Jame-Gam/Jetpack Jumper/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/p.dir/src/main.cpp.o"
 	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/p.dir/src/main.cpp.o -MF CMakeFiles/p.dir/src/main.cpp.o.d -o CMakeFiles/p.dir/src/main.cpp.o -c "/home/sree/Jame-Gam/Jetpack Jumper/src/main.cpp"
 
 CMakeFiles/p.dir/src/main.cpp.i: cmake_force
@@ -89,7 +117,7 @@ CMakeFiles/p.dir/src/main.cpp.s: cmake_force
 CMakeFiles/p.dir/src/window.cpp.o: CMakeFiles/p.dir/flags.make
 CMakeFiles/p.dir/src/window.cpp.o: /home/sree/Jame-Gam/Jetpack\ Jumper/src/window.cpp
 CMakeFiles/p.dir/src/window.cpp.o: CMakeFiles/p.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/sree/Jame-Gam/Jetpack Jumper/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/p.dir/src/window.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/sree/Jame-Gam/Jetpack Jumper/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/p.dir/src/window.cpp.o"
 	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/p.dir/src/window.cpp.o -MF CMakeFiles/p.dir/src/window.cpp.o.d -o CMakeFiles/p.dir/src/window.cpp.o -c "/home/sree/Jame-Gam/Jetpack Jumper/src/window.cpp"
 
 CMakeFiles/p.dir/src/window.cpp.i: cmake_force
@@ -102,12 +130,16 @@ CMakeFiles/p.dir/src/window.cpp.s: cmake_force
 
 # Object files for target p
 p_OBJECTS = \
+"CMakeFiles/p.dir/src/api.cpp.o" \
+"CMakeFiles/p.dir/src/listeners.cpp.o" \
 "CMakeFiles/p.dir/src/main.cpp.o" \
 "CMakeFiles/p.dir/src/window.cpp.o"
 
 # External object files for target p
 p_EXTERNAL_OBJECTS =
 
+p : CMakeFiles/p.dir/src/api.cpp.o
+p : CMakeFiles/p.dir/src/listeners.cpp.o
 p : CMakeFiles/p.dir/src/main.cpp.o
 p : CMakeFiles/p.dir/src/window.cpp.o
 p : CMakeFiles/p.dir/build.make
@@ -119,7 +151,7 @@ p : /usr/lib/libSDL2_mixer.so
 p : /usr/lib/libSDL2.so
 p : /usr/lib/libfmt.so
 p : CMakeFiles/p.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/sree/Jame-Gam/Jetpack Jumper/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable p"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/sree/Jame-Gam/Jetpack Jumper/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable p"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/p.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

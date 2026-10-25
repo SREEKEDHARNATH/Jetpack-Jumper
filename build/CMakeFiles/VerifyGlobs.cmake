@@ -4,6 +4,8 @@
 # SOURCES at CMakeLists.txt:21 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/sree/Jame-Gam/Jetpack Jumper/src/*.cpp")
 set(OLD_GLOB
+  "/home/sree/Jame-Gam/Jetpack Jumper/src/api.cpp"
+  "/home/sree/Jame-Gam/Jetpack Jumper/src/listeners.cpp"
   "/home/sree/Jame-Gam/Jetpack Jumper/src/main.cpp"
   "/home/sree/Jame-Gam/Jetpack Jumper/src/window.cpp"
   )
