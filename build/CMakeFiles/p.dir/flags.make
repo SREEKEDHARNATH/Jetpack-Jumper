@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I"/home/sree/Jame-Gam/Jetpack Jumper/include" -isystem /usr/include/SDL2 -isystem /usr/include/libpng16 -isystem /usr/include/rav1e -isystem /usr/include/svt-av1 -isystem /usr/include/webp -isystem /usr/include/harfbuzz -isystem /usr/include/glib-2.0 -isystem /usr/lib/glib-2.0/include -isystem /usr/include/sysprof-6 -isystem /usr/include/freetype2
 
-CXX_FLAGS = -std=gnu++20 -D_GNU_SOURCE=1 -D_REENTRANT -DHWY_SHARED_DEFINE -DWITH_GZFILEOP -DAVIF_DLL -DEB_DLL -DRTC_BUILD=0 -pthread
+CXX_FLAGS = -g -std=gnu++20 -D_GNU_SOURCE=1 -D_REENTRANT -DHWY_SHARED_DEFINE -DWITH_GZFILEOP -DAVIF_DLL -DEB_DLL -DRTC_BUILD=0 -pthread
 

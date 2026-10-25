@@ -7,6 +7,7 @@ set(OLD_GLOB
   "/home/sree/Jame-Gam/Jetpack Jumper/src/api.cpp"
   "/home/sree/Jame-Gam/Jetpack Jumper/src/listeners.cpp"
   "/home/sree/Jame-Gam/Jetpack Jumper/src/main.cpp"
+  "/home/sree/Jame-Gam/Jetpack Jumper/src/physics.cpp"
   "/home/sree/Jame-Gam/Jetpack Jumper/src/window.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

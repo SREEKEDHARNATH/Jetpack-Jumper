@@ -4,13 +4,26 @@
 #include <SDL_events.h>
 #include <SDL_keycode.h>
 #include <SDL_mouse.h>
+#include <SDL_pixels.h>
 #include <SDL_render.h>
+#include <SDL_stdinc.h>
+#include <SDL_surface.h>
 #include <SDL_timer.h>
 #include <SDL_video.h>
 #include <SDL_image.h>
+#include <cstddef>
+#include <cstdio>
+#include <cstdlib>
 #include <iostream>
+#include <memory>
+#include <random>
 #include <utility>
+#include <vector>
+#include "api.hpp"
+#include "box2d/box2d.h"
+#include "box2d/types.h"
 #include "listeners.hpp"
+#include "physics.hpp"
 
 std::pair<bool, const char*> init(){
     int img_flags=IMG_INIT_JPG;
@@ -30,6 +43,84 @@ std::pair<bool, const char*> init(){
     }
     return {true, "Great"};;
 }
+std::shared_ptr<SDL_Texture> getRGB(int w,int h,Uint8 r, Uint8 g, Uint8 b){
+    std::shared_ptr<SDL_Texture> ptr;
+    SDL_Surface* surf=SDL_CreateRGBSurface(0, w, h, 32, 0,0,0,0);
+    if (!surf){
+        std::cerr << SDL_GetError() << "\n";
+        return ptr;
+    }
+    if (SDL_FillRect(surf, NULL, SDL_MapRGB(surf->format, r, g, b))){
+        std::cerr << SDL_GetError() << "\n";
+        return ptr;
+    }
+    SDL_Texture* tex=SDL_CreateTextureFromSurface(app::getRenderer(), surf);;
+    if (!tex){
+        std::cerr << SDL_GetError() << "\n";
+        return ptr;
+    }
+    ptr.reset(tex, SDL_DestroyTexture);
+    return ptr;
+
+}
+class platform{
+    app::api::image img;
+    std::shared_ptr<SDL_Texture> ptr;
+    std::vector<SDL_Rect> pos;
+    std::vector<app::physics::body> bodies;
+    public:
+        platform(app::physics::world w, Uint16 num=100, int gap=128) : img("", false){
+            Uint16 width=128;
+            Uint16 height=32;
+            ptr = getRGB(32,32, 255,0,0);
+            img.setTex(ptr.get());
+            int curY=app::getH()-height;
+            pos.resize(num);
+            int x=0;
+            std::random_device rd;
+            std::mt19937 gen(rd());
+            std::uniform_int_distribution<int> distrib(0,1);
+
+            SDL_Rect a={0,curY,width,height};
+            pos[0]=a;
+            bodies.emplace_back(w, (b2Vec2){(float)x/32.0f,(float)curY/32.0f}, width/32.0f, height/32.0f, b2_staticBody);
+
+            for (int i=1;i<num;i++){
+                switch (x) {
+                    case 0:
+                        if (distrib(gen)){
+                            x=560;
+                        }
+                        break;
+                    case 560:
+                        if (distrib(gen)){
+                            x=1152;
+                        }
+                        else {
+                            x=0;
+                        }
+                        break;
+                    case 1152:
+                        if (distrib(gen)){
+                            x=560;
+                        }
+                        break;
+                        
+                }
+                curY-=gap;
+                a={x,curY,width,height};
+                pos[i]=a;
+                bodies.emplace_back(w, (b2Vec2){(float)x/32.0f,(float)curY/32.0f}, width/32.0f, height/32.0f, b2_staticBody, true);
+
+            }
+        }
+        void draw(){
+            for (auto& a : pos){
+                img.dstrect=a;
+                img.draw();
+            }
+        }
+};
 namespace app {
     void run(){
         auto i=init();
@@ -42,6 +133,15 @@ namespace app {
         bool running=true;
         double fps=60;
 
+        physics::world world;
+        api::image im("assets/images/little-guy.jpg");
+        physics::body body(world, (b2Vec2){0,560/32.0f},im.dstrect.w/32.0f,im.dstrect.h/32.0f, b2_dynamicBody, true);
+        platform pl(world);
+        b2Vec2 vel={0,0};
+        
+        constexpr int basespeed=5;
+        constexpr float maxfuel=6.0f;
+        float fuel=maxfuel;
         while (running) {
             while (SDL_PollEvent(&e)) {
                 switch (e.type) {
@@ -66,14 +166,45 @@ namespace app {
                 }
             }
 
-            SDL_RenderClear(getRenderer());
-            SDL_RenderPresent(getRenderer());
-            
             if (keylistener::isPressed(SDLK_ESCAPE)){
                 running=false;
             }
-            std::cout << mouselistener::getScrlY()<<"\n";
-            
+            if (keylistener::isDown(SDLK_RIGHT)){
+                vel.x=basespeed;
+            }
+            else if (keylistener::isDown(SDLK_LEFT)){
+                vel.x=-1*basespeed;
+            }
+            else {
+                vel.x=0;
+            }
+            if (keylistener::isDown(SDLK_SPACE)){
+                if (fuel>0){
+                    vel.y-=0.05f;
+                    fuel-=0.05f;
+                }
+                else {
+                    vel.y=0;    
+                }
+            }
+            else {
+                if (fuel < maxfuel){
+                    fuel+=0.05f;
+                }
+                vel.y=0;
+            }
+            if (vel.x!=0 || vel.y!=0){
+                b2Body_ApplyForceToCenter(body.get(), vel, false);
+            }
+            world.simulate();
+            auto pos=b2Body_GetPosition(body.get());
+            im.dstrect.x=pos.x*32;
+            im.dstrect.y=pos.y*32;
+
+            SDL_RenderClear(getRenderer());
+            pl.draw();
+            im.draw();
+            SDL_RenderPresent(getRenderer());
             
             keylistener::update();
             mouselistener::update();

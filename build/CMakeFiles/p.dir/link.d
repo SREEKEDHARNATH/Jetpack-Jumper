@@ -5,6 +5,7 @@ p: \
   CMakeFiles/p.dir/src/api.cpp.o \
   CMakeFiles/p.dir/src/listeners.cpp.o \
   CMakeFiles/p.dir/src/main.cpp.o \
+  CMakeFiles/p.dir/src/physics.cpp.o \
   CMakeFiles/p.dir/src/window.cpp.o \
   /home/sree/Jame-Gam/Jetpack Jumper/libs/libbox2d.a \
   /usr/lib/libSDL2_image.so \
@@ -84,6 +85,8 @@ CMakeFiles/p.dir/src/api.cpp.o:
 CMakeFiles/p.dir/src/listeners.cpp.o:
 
 CMakeFiles/p.dir/src/main.cpp.o:
+
+CMakeFiles/p.dir/src/physics.cpp.o:
 
 CMakeFiles/p.dir/src/window.cpp.o:
 
