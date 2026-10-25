@@ -236,14 +236,14 @@ CMakeFiles/p.dir/src/window.cpp.o: \
  /usr/include/SDL2/SDL_misc.h /usr/include/SDL2/SDL_error.h \
  /usr/include/SDL2/SDL_events.h /usr/include/SDL2/SDL_keycode.h \
  /usr/include/SDL2/SDL_mouse.h /usr/include/SDL2/SDL_pixels.h \
- /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_stdinc.h \
- /usr/include/SDL2/SDL_surface.h /usr/include/SDL2/SDL_timer.h \
- /usr/include/SDL2/SDL_video.h /usr/include/SDL2/SDL_image.h \
- /usr/include/SDL2/SDL.h /usr/include/c++/16/cstddef \
- /usr/include/c++/16/cstdio /usr/include/c++/16/iostream \
- /usr/include/c++/16/ostream /usr/include/c++/16/bits/ostream.h \
- /usr/include/c++/16/ios /usr/include/c++/16/iosfwd \
- /usr/include/c++/16/bits/stringfwd.h \
+ /usr/include/SDL2/SDL_rect.h /usr/include/SDL2/SDL_render.h \
+ /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_surface.h \
+ /usr/include/SDL2/SDL_timer.h /usr/include/SDL2/SDL_video.h \
+ /usr/include/SDL2/SDL_image.h /usr/include/SDL2/SDL.h \
+ /usr/include/c++/16/cstddef /usr/include/c++/16/cstdio \
+ /usr/include/c++/16/iostream /usr/include/c++/16/ostream \
+ /usr/include/c++/16/bits/ostream.h /usr/include/c++/16/ios \
+ /usr/include/c++/16/iosfwd /usr/include/c++/16/bits/stringfwd.h \
  /usr/include/c++/16/bits/memoryfwd.h /usr/include/c++/16/bits/postypes.h \
  /usr/include/c++/16/cwchar /usr/include/c++/16/exception \
  /usr/include/c++/16/bits/exception_ptr.h \
@@ -357,4 +357,5 @@ CMakeFiles/p.dir/src/window.cpp.o: \
  /home/sree/Jame-Gam/Jetpack\ Jumper/include/box2d/id.h \
  /home/sree/Jame-Gam/Jetpack\ Jumper/include/box2d/types.h \
  /home/sree/Jame-Gam/Jetpack\ Jumper/include/listeners.hpp \
- /home/sree/Jame-Gam/Jetpack\ Jumper/include/physics.hpp
+ /home/sree/Jame-Gam/Jetpack\ Jumper/include/physics.hpp \
+ /usr/include/SDL2/SDL_ttf.h

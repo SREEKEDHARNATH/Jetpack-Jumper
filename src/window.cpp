@@ -5,18 +5,21 @@
 #include <SDL_keycode.h>
 #include <SDL_mouse.h>
 #include <SDL_pixels.h>
+#include <SDL_rect.h>
 #include <SDL_render.h>
 #include <SDL_stdinc.h>
 #include <SDL_surface.h>
 #include <SDL_timer.h>
 #include <SDL_video.h>
 #include <SDL_image.h>
+#include <cmath>
 #include <cstddef>
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
 #include <memory>
 #include <random>
+#include <string>
 #include <utility>
 #include <vector>
 #include "api.hpp"
@@ -24,6 +27,7 @@
 #include "box2d/types.h"
 #include "listeners.hpp"
 #include "physics.hpp"
+#include <SDL2/SDL_ttf.h>
 
 std::pair<bool, const char*> init(){
     int img_flags=IMG_INIT_JPG;
@@ -32,6 +36,9 @@ std::pair<bool, const char*> init(){
     }
     if ((IMG_Init(img_flags) & img_flags) != img_flags){
         return {false, IMG_GetError()};
+    }
+    if (TTF_Init()){
+        return {false, TTF_GetError()};
     }
     app::getWindow()=SDL_CreateWindow(app::getTitle(), SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, app::getW(), app::getH(), 0);
     if (!app::getWindow()){
@@ -72,7 +79,7 @@ class platform{
         platform(app::physics::world w, Uint16 num=100, int gap=128) : img("", false){
             Uint16 width=128;
             Uint16 height=32;
-            ptr = getRGB(32,32, 255,0,0);
+            ptr = getRGB(width,height, 255,0,0);
             img.setTex(ptr.get());
             int curY=app::getH()-height;
             pos.resize(num);
@@ -83,7 +90,7 @@ class platform{
 
             SDL_Rect a={0,curY,width,height};
             pos[0]=a;
-            bodies.emplace_back(w, (b2Vec2){(float)x/32.0f,(float)curY/32.0f}, width/32.0f, height/32.0f, b2_staticBody);
+            bodies.emplace_back(w, (b2Vec2){(a.x+a.w/2.0f)/32.0f,a.y/32.0f}, a.w/32.0f, a.h/32.0f, b2_staticBody);
 
             for (int i=1;i<num;i++){
                 switch (x) {
@@ -110,17 +117,70 @@ class platform{
                 curY-=gap;
                 a={x,curY,width,height};
                 pos[i]=a;
-                bodies.emplace_back(w, (b2Vec2){(float)x/32.0f,(float)curY/32.0f}, width/32.0f, height/32.0f, b2_staticBody, true);
-
+                bodies.emplace_back(w, (b2Vec2){(a.x+a.w/2.0f)/32.0f,a.y/32.0f}, a.w/32.0f, a.h/32.0f, b2_staticBody);
+                
             }
+
         }
         void draw(){
             for (auto& a : pos){
-                img.dstrect=a;
-                img.draw();
+                if (SDL_HasIntersection(&a, &app::getCamera())){
+                    img.dstrect=a;
+                    img.dstrect.y-=(app::getCamera().y);
+                    img.draw();
+                }
             }
         }
 };
+class text{
+    app::api::image img;
+    std::string txt;
+    std::shared_ptr<TTF_Font> ptr;
+    void init(const char* t){
+        SDL_Surface* surf = TTF_RenderUTF8_Blended(ptr.get(), t, {255,255,255,255});
+        if (!surf){
+            std::cerr << IMG_GetError() << "\n";
+            return;
+        }
+        SDL_Texture* tex=SDL_CreateTextureFromSurface(app::getRenderer(), surf);
+        if (!tex){
+            std::cerr << SDL_GetError() << "\n";
+            return;
+        }
+        SDL_FreeSurface(surf);
+        img.setTex(tex);
+    }
+    public:
+        text(const char* text, const char* fontfile, int ptsize) : img("", false){
+            txt=text;
+            TTF_Font* font=TTF_OpenFont(fontfile, ptsize);
+            if (!font){
+                std::cerr << IMG_GetError() << "\n";
+                return;
+            }
+            ptr.reset(font, TTF_CloseFont);
+            init(text);
+        }
+        void draw(){
+            img.draw();
+        }
+        void setText(const char* t){
+            if (ptr.get() && img.getTex().get()){
+                init(t);
+            }
+        }
+        std::string getText(){
+            return txt;
+        }
+};
+std::string getIndicator(float fuel, float maxfuel){
+    int i=std::ceil(((fuel/maxfuel)*100));
+    std::string st;
+    for (int j=0;j<i;j++){
+        st+="|";
+    }
+    return st;
+}
 namespace app {
     void run(){
         auto i=init();
@@ -135,13 +195,16 @@ namespace app {
 
         physics::world world;
         api::image im("assets/images/little-guy.jpg");
-        physics::body body(world, (b2Vec2){0,560/32.0f},im.dstrect.w/32.0f,im.dstrect.h/32.0f, b2_dynamicBody, true);
+        physics::body body(world, (b2Vec2){0,660/32.0f},im.dstrect.w/32.0f,im.dstrect.h/32.0f, b2_dynamicBody, true);
         platform pl(world);
         b2Vec2 vel={0,0};
         
         constexpr int basespeed=5;
-        constexpr float maxfuel=6.0f;
+        constexpr float maxfuel=8.0f;
         float fuel=maxfuel;
+        
+        text t("Initialising", "assets/fonts/Montserrat-BoldItalic.ttf", 14);
+        std::string te;
         while (running) {
             while (SDL_PollEvent(&e)) {
                 switch (e.type) {
@@ -193,6 +256,12 @@ namespace app {
                 }
                 vel.y=0;
             }
+            auto a=getIndicator(fuel, maxfuel);
+            if (te != a){
+                te=a;
+                t.setText(a.c_str());
+            }
+
             if (vel.x!=0 || vel.y!=0){
                 b2Body_ApplyForceToCenter(body.get(), vel, false);
             }
@@ -200,10 +269,12 @@ namespace app {
             auto pos=b2Body_GetPosition(body.get());
             im.dstrect.x=pos.x*32;
             im.dstrect.y=pos.y*32;
+            getCamera().y=im.dstrect.y+im.dstrect.h/2 - getH()/2;
 
             SDL_RenderClear(getRenderer());
             pl.draw();
             im.draw();
+            t.draw();
             SDL_RenderPresent(getRenderer());
             
             keylistener::update();
@@ -219,6 +290,7 @@ namespace app {
             SDL_DestroyWindow(getWindow());
         }
         IMG_Quit();
+        TTF_Quit();
         SDL_Quit();
     }
 
@@ -239,5 +311,10 @@ namespace app {
     SDL_Renderer*& getRenderer(){
         static SDL_Renderer* renderer=nullptr;
         return renderer;
+    }
+
+    SDL_Rect& getCamera(){
+        static SDL_Rect camera={0,0,getW(),getH()};
+        return camera;
     }
 }

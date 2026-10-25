@@ -10,5 +10,7 @@ namespace app {
     const char* getTitle();
     
     SDL_Window*& getWindow();
-    SDL_Renderer*& getRenderer();   
+    SDL_Renderer*& getRenderer();
+
+    SDL_Rect& getCamera();
 }

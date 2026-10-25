@@ -1269,6 +1269,7 @@ CMakeFiles/p.dir/src/window.cpp.o: /home/sree/Jame-Gam/Jetpack\ Jumper/src/windo
   /usr/include/SDL2/SDL_thread.h \
   /usr/include/SDL2/SDL_timer.h \
   /usr/include/SDL2/SDL_touch.h \
+  /usr/include/SDL2/SDL_ttf.h \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_video.h \
   /usr/include/SDL2/begin_code.h \
@@ -1993,6 +1994,8 @@ CMakeFiles/p.dir/src/listeners.cpp.o:
 /usr/include/linux/errno.h:
 
 /usr/include/limits.h:
+
+/usr/include/SDL2/SDL_ttf.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/x86gprintrin.h:
 
