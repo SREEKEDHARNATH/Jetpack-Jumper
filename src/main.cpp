@@ -1,5 +1,6 @@
-#include <iostream>
+#include "window.hpp"
 
 int main(int argc, char *argv[]){
-    std::cout << "Hello World!\n";
+    app::run();
+    app::quit();    
 }

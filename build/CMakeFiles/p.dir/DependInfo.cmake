@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/sree/Jame-Gam/Jetpack Jumper/src/main.cpp" "CMakeFiles/p.dir/src/main.cpp.o" "gcc" "CMakeFiles/p.dir/src/main.cpp.o.d"
+  "/home/sree/Jame-Gam/Jetpack Jumper/src/window.cpp" "CMakeFiles/p.dir/src/window.cpp.o" "gcc" "CMakeFiles/p.dir/src/window.cpp.o.d"
   "" "p" "gcc" "CMakeFiles/p.dir/link.d"
   )
 

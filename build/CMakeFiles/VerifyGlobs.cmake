@@ -5,6 +5,7 @@
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/sree/Jame-Gam/Jetpack Jumper/src/*.cpp")
 set(OLD_GLOB
   "/home/sree/Jame-Gam/Jetpack Jumper/src/main.cpp"
+  "/home/sree/Jame-Gam/Jetpack Jumper/src/window.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
