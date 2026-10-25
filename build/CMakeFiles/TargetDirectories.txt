@@ -1,0 +1,3 @@
+/home/sree/Jame-Gam/Jetpack Jumper/build/CMakeFiles/p.dir
+/home/sree/Jame-Gam/Jetpack Jumper/build/CMakeFiles/edit_cache.dir
+/home/sree/Jame-Gam/Jetpack Jumper/build/CMakeFiles/rebuild_cache.dir
