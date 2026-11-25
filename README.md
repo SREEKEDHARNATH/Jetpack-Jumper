@@ -4,6 +4,7 @@
 
 You are a little guy who have to face large obstacles but you have jetpack.
 But its invisible you can see object up but not down.
+You need the latest distro with updates.
 
 ## Features
 * Jetpack.
